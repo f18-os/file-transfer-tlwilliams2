@@ -61,10 +61,10 @@ outMessage = input("Enter file name to send: ")
 fileName = outMessage
 
 with open(fileName,'rb') as file:
-    data = file.read(1024)
-    framedSend(s,data,debug)
-    while(data != bytes(''.encode())):
-          data = file.read(1024)
-          framedSend(s,data,debug)
+    data = file.read(100)
+    framedSend(s,data,debug=1)
+   # while(data != bytes(''.encode())):
+    #      data = file.read(100)
+     #     framedSend(s,data,debug=1)
 
 

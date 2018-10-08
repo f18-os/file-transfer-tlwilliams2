@@ -44,21 +44,21 @@ while True:
         f = open(fileName,'wb')
 
         while 1:
-            data = framedReceive(sock,debug)
+            data = framedReceive(sock,debug=1)
             if not data: break
             f = open(fileName,'wb')
             while data != bytes(''.encode()):
                 f.write(data)
                 print(data.decode())
-                data = framedReceive(sock,debug)
+                data = framedReceive(sock,debug=1)
                 print("Received")
 
         while True:
-            payload = framedReceive(sock, debug)
+            payload = framedReceive(sock, debug=1)
             if debug: print("rec'd: ", payload)
             if not payload:
                 if debug: print("child exiting")
                 sys.exit(0)
             payload += b"!"             # make emphatic!
-            framedSend(sock, payload, debug)
+            framedSend(sock, payload, debug=1)
 
